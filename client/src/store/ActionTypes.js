@@ -1,0 +1,6 @@
+const ActionTypes = {
+    SNACKBAR_OPEN_REQUEST: 'SNACKBAR_OPEN_REQUEST',
+    SNACKBAR_CLOSE_REQUEST: 'SNACKBAR_CLOSE_REQUEST'
+}
+
+export default ActionTypes;

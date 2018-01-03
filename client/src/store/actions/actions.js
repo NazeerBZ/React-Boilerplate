@@ -1,17 +1,17 @@
-
+import ActionTypes from '../ActionTypes';
 
 export default class Actions {
 
     static snackbarOpenRequest(msg) {
         return {
-            type: 'SNACKBAR_OPEN_REQUEST',
+            type: ActionTypes.SNACKBAR_OPEN_REQUEST,
             msg: msg
         }
     }
 
     static snackbarCloseRequest() {
         return {
-            type: 'SNACKBAR_CLOSE_REQUEST',
+            type: ActionTypes.SNACKBAR_CLOSE_REQUEST,
             msg: ''
         }
     }
