@@ -1,28 +1,25 @@
-
-import './index.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import Store from './store/store.js';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
-
-import { App, Example } from './containers';
+import { store, persistor } from './store';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import registerServiceWorker from './registerServiceWorker';
+import { Loader } from './components';
+import './styles/index.css';
+import { App, Login } from './containers';
 
 ReactDOM.render(
-  <MuiThemeProvider>
-    <Provider store={Store}>
-      <Router history={browserHistory}>
-
-        <Route path='/' component={App}>
-          <IndexRoute component={Example} />
-        </Route>
-
-      </Router>
-    </Provider>
-  </MuiThemeProvider>
-  ,
-  document.getElementById("root")
-);
+  <Provider store={store}>
+    <PersistGate persistor={persistor} loading={<Loader />}>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/login' component={Login} />
+          <Route path='/' component={App} />
+        </Switch>
+      </BrowserRouter>
+    </PersistGate>
+  </Provider>
+  , document.getElementById('root'));
+registerServiceWorker();

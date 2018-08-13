@@ -8,4 +8,3 @@ const server = http.createServer(app);
 server.listen(port, () => {
   console.log('Running on port', port);
 });
-// @Copyrights Farooq AR
